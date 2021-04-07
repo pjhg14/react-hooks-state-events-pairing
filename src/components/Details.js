@@ -19,6 +19,12 @@ function Details({ video }) {
         setDislikes(dislikes + 1)
     }
 
+    const [toggleComments, setToggleComments] = useState(true)
+
+    function handleToggleButton() {
+        setToggleComments(!toggleComments)
+    }
+
     return(
         <div>
             {/* title */}
@@ -32,9 +38,10 @@ function Details({ video }) {
             </div>
             <br></br>
             {/* comments toggle button */}
-            <button>Hide Comments</button>
+            <button onClick={handleToggleButton}>Hide Comments</button>
             {/* comments */}
-            <Comments comments={comments}/>
+            {toggleComments && <Comments comments={comments}/>}
+            
         </div>
     )
 }
